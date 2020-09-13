@@ -17,16 +17,10 @@ let response;
 exports.lambdaHandler = async (event, context) => {
   try {
     // const ret = await axios(url);
-    let message;
-    if (event) message = JSON.stringify(event);
-    else message = "send me a message and I'll send it back";
 
     response = {
       statusCode: 200,
-      body: JSON.stringify({
-        message,
-        // location: ret.data.trim()
-      }),
+      body: "This is a lambda deployed with SAM",
     };
   } catch (err) {
     console.log(err);
