@@ -1,5 +1,5 @@
-// const axios = require('axios')
-// const url = 'http://checkip.amazonaws.com/';
+const axios = require("axios");
+const url = "http://checkip.amazonaws.com/";
 let response;
 
 /**
@@ -16,11 +16,14 @@ let response;
  */
 exports.lambdaHandler = async (event, context) => {
   try {
-    // const ret = await axios(url);
+    const IP = await axios(url);
 
     response = {
       statusCode: 200,
-      body: "This is a lambda deployed with SAM",
+      body: JSON.stringify({
+        message: "Hello from SAM deployed AWS Lambda",
+        location: IP.data.trim(),
+      }),
     };
   } catch (err) {
     console.log(err);
